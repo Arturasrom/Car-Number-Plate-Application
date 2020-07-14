@@ -1,0 +1,51 @@
+<!-- Title group  -->
+<div class="title-group">
+  <h1 class="mat-h1">Add Car Number Plate Owner</h1>
+  <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+
+<!-- Form -->
+<div class="inner-wrapper">
+  <form [formGroup]="ownerForm" (ngSubmit)="submitOwnerForm()" #resetOwnerForm="ngForm" novalidate>
+
+    <!-- Left block -->
+    <mat-card>
+      <div class="controlers-wrapper">
+
+        <!-- Owners name -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Owner name" formControlName="owner_name">
+          <mat-error *ngIf="handleError('owner_name', 'required')">
+            You must provide a <strong>owners name</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Car number plate -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Car plate number" formControlName="license_plate">
+          <mat-error *ngIf="handleError('license_plate', 'required')">
+            You must provide a car number plate in format <strong>LTU123</strong>
+          </mat-error>
+          <mat-error *ngIf="handleError('license_plate', 'pattern')">
+            ERROR! You must provide a valid car number plate in format <strong>LTU123</strong>
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+    </mat-card>
+
+    <!-- Right block -->
+    <mat-card>
+      <div class="controlers-wrapper"></div>
+    </mat-card>
+
+    <!-- Submit & Reset -->
+    <mat-card>
+      <div class="full-wrapper button-wrapper">
+        <div class="button-wrapper">
+          <button mat-flat-button color="warn">Submit</button>
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</div>
